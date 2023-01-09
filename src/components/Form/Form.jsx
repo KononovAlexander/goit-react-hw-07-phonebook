@@ -2,7 +2,7 @@ import PropTypes from "prop-types"
 import {Box} from '../Box'
 import {Input, Button, Label}from './Form.styled';
 import { useDispatch, useSelector } from "react-redux";
-import { addContact} from "redux/contactsSlice";
+import { addContact} from "redux/operations";
 import { nanoid } from 'nanoid';
 
 export const Form = () => {

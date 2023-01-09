@@ -1,26 +1,23 @@
 import PropTypes from "prop-types"
 import {List, Button} from './Contacts.styled';
 import { useSelector, useDispatch } from "react-redux";
-import { deleteContact } from "redux/contactsSlice";
+import { deleteContact } from "redux/operations";
+import { selectFilteredContacts } from 'redux/selectors';
 
 
 export const Contacts = () => {
-    const contacts = useSelector(state => state.contacts.contacts);
-    const filter = useSelector(state => state.filter.query);
+    const contacts = useSelector(selectFilteredContacts);
     const dispatch = useDispatch();
-
-    let normalizedFilter = filter?.toLowerCase();
-  const filtredContacts = contacts.filter(contact =>
-    contact.name?.toLowerCase().includes(normalizedFilter)
-  );
 
 
     return (
             <List>
-                {filtredContacts.map(contact => {  
+                {   contacts.map(contact => {  
                     return (<li 
                         key={contact.id} 
-                        >{contact.name}: {contact.number}
+                        >
+                            <p>{contact.name}: {contact.phone}</p>
+                            {/* <p>{contact.createdAt}</p> */}
                     <Button 
                         onClick={() => {dispatch(deleteContact(contact.id))}} 
                         
