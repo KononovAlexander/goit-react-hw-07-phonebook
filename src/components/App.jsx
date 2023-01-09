@@ -39,7 +39,7 @@ font-size:36px;
           <Form />
 
           </div>
-          <Box width={400}>
+          <Box width={600}>
           <Title>Contacts</Title>
                 
                 <Filter/>
